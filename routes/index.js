@@ -4,24 +4,23 @@ require('dotenv').config()
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var http = require('http');
 
-
+var MyModel = mongoose.model('test', new Schema({ name: String }));
 var schema = new mongoose.Schema({ name: 'string', size: 'string' });
 var Tank = mongoose.model('Tank', schema);
-
-
-
-// Rick.find({ name: 'john', age: { $gte: 18 }});
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   
-  var contentData = Tank.find();
-  console.log(contentData);
-  
+  // var contentData = Tank.find();
+  // console.log(MyModel);
+// Tank.find(function(err,Tanks){
+//   res.send(Tank);
+// });
+
   res.render('index', { title: 'Testing using MongoDb and Mongoose on Express.js server' , user:'Ricardo Furtado'});
-}); 
+});  
 
 
 router.post('/send', function(req, res, next) {
@@ -34,30 +33,18 @@ var newItem = new Tank({ name: name ,size: size });
     console.log('Success saving the new item ')
   });
 
-  res.render('index', { title: 'Testing using MongoDb and Mongoose on Express.js server' , user:'Ricardo Furtado'});
+  res.redirect('/');
 }); 
 
 router.post('/delete', function(req, res, next) {
   var name = req.body.name;
   
-  Tank.deleteMany({ name: req.body.name }, function (err) {
+  Tank.deleteOne({ name: req.body.name }, function (err) {
     if (err) return handleError(err);
-    alert('The item :' + name + ' has been deleted...')
+    console.log('The item :' + name + ' has been deleted...')
   });
   
-    res.render('index', { title: 'Testing using MongoDb and Mongoose on Express.js server' , user:'Ricardo Furtado'});
+    res.redirect('/');
   }); 
-
-router.get('/test', function(req, res, next) {
-  // res.render('index', { body:  });
-
-
-  // db.connect.find(function (err, sample_airbnb) {
-  //   if (err) return console.error(err);
-  //   console.log(kittens);
-  // });  
-  console.log('test de conexao')
-});
-
 
 module.exports = router;
