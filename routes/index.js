@@ -3,6 +3,8 @@ var router = express.Router();
 require('dotenv').config()
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
 
 var schema = new mongoose.Schema({ name: 'string', size: 'string' });
 var Tank = mongoose.model('Tank', schema);
@@ -45,8 +47,6 @@ router.post('/delete', function(req, res, next) {
   
     res.render('index', { title: 'Testing using MongoDb and Mongoose on Express.js server' , user:'Ricardo Furtado'});
   }); 
-
-
 
 router.get('/test', function(req, res, next) {
   // res.render('index', { body:  });

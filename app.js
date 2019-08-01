@@ -4,9 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config()
-
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+
 
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true});
 
