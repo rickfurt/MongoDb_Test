@@ -6,8 +6,8 @@ var logger = require('morgan');
 require('dotenv').config()
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true});
-
+mongoose.connect('mongodb+srv://Rick:Rick@rick-udufg.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});
+// process.env.MONGO_URI
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
