@@ -6,13 +6,36 @@ var logger = require('morgan');
 require('dotenv').config()
 
 const mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true});
+
+// var MyModel = mongoose.model('test', new Schema({ name: String }));
+// var schema = new mongoose.Schema({ name: 'string', size: 'string' });
+// var Tank = mongoose.model('Tank', schema);
+
+// var small = new Tank({ name: req.body.name ,size: 'small' });
+// small.save(function (err) {
+//   if (err) return handleError(err);
+//   // saved!
+// });
+
+// console.log(Tank.findOne({size:'big'}));
+
+// or
+
+// Tank.create({ size: 'small' }, function (err, small) {
+//   if (err) return handleError(err);
+//   // saved!
+// });
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log("we're connected!") 
+  console.log("we're connected!"); 
+
 });
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
