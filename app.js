@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 
 // var MyModel = mongoose.model('test', new Schema({ name: String }));
 // var schema = new mongoose.Schema({ name: 'string', size: 'string' });
