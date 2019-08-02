@@ -17,7 +17,6 @@ var result;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
   //Get the content from Db
   var contentData = Tank.find(function (err, Tank) {
     if (err) return console.error(err);
@@ -25,7 +24,7 @@ router.get('/', function(req, res, next) {
   });
   setTimeout(function(){
     res.render('index', { title: 'MongoDb Test on Express.js server' , user:'Ricardo Furtado',readDb:result});  
-  },3000)
+  },5000)
 });  
 
 
