@@ -1,8 +1,12 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.align{
+    margin: auto;
 }
 
-a {
-  color: #00B7FF;
+.db-fields{
+    border: 1px solid gray;
+    
+}
+
+.bd{
+    border-radius: 5px;
 }

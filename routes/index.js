@@ -5,21 +5,33 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var http = require('http');
+var db = mongoose.connection;
 
+// Creating a collection on MongoDB
 var MyModel = mongoose.model('test', new Schema({ name: String }));
+//Creating model
 var schema = new mongoose.Schema({ name: 'string', size: 'string' });
 var Tank = mongoose.model('Tank', schema);
+schema.set('toJSON', { getters: true, virtuals: false });
+var result;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  
-  // var contentData = Tank.find();
-  // console.log(MyModel);
-// Tank.find(function(err,Tanks){
-//   res.send(Tank);
-// });
 
-  res.render('index', { title: 'Testing using MongoDb and Mongoose on Express.js server' , user:'Ricardo Furtado'});
+  //Get the content from Db
+  var contentData = Tank.find(function (err, Tank) {
+    if (err) return console.error(err);
+    result = Tank;
+    // console.log(result);
+  });
+
+  // console.log(test);
+  // var dt = JSON.stringify(contentData);
+  // console.log(contentData);
+  setTimeout(function(){
+    res.render('index', { title: 'MongoDb Test on Express.js server' , user:'Ricardo Furtado',readDb:result});  
+  },3000)
+  // res.render('index', { title: 'Testing using MongoDb and Mongoose on Express.js server' , user:'Ricardo Furtado',readDb:result});
 });  
 
 

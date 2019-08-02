@@ -1,15 +1,39 @@
+<div class=" jumbotron ">
 <h1>{{title}}</h1>
-<p>Developed by {{user}}</p>
-
+<h5>Developed by {{user}}</h5><hr>
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-6">
 <h1>Saving in the database</h1>
     <form action="/send" method="post">
-    <input type="text" name="name"  placeholder="Item name" required>
-    <input type="text" name="size"  placeholder="Size" required>
-    <input type="submit" value="Send">
-</form>
+        <div class="row">
+    <input class="form-control col-xs-12 col-sm-12 col-md-4" type="text" name="name"  placeholder="Item name" required>
+    <input class="form-control col-xs-12 col-sm-12 col-md-4" type="text" name="size"  placeholder="Size" required>
+    <input class="btn btn-primary col-xs-4 col-sm-4 col-md-2" type="submit" value="Send">
+    </div>
+</form><hr>
+
 
 <h1>Deleting from the Database</h1>
     <form action="/delete" method="post">
-    <input type="text" name="name"  placeholder="Item name" required>
-    <input type="submit" value="Delete">
+    <div class="row mb-2">
+    <input class="form-control col-xs-12 col-sm-12 col-md-6" type="text" name="name"  placeholder="Item name" required>
+    <input class="btn btn-danger col-xs-12 col-sm-12 col-md-2" type="submit" value="Delete">
+    </div>
 </form>
+</div>
+{{!-- read and show data on Dom --}}
+<div class="text-center col-xs-12 col-sm-12 col-md-6">
+    <h1 class="text-center db-fields">Database</h1>
+        <div class="row">
+            <h4 class="col-6 db-fields">Name</h4><h4 class="col-6 db-fields">Size</h4>
+        </div>
+        <div class="row">
+    {{#each readDb}}
+      <h4 class="col-6 db-fields">{{name}}</h4><h4 class="col-6 db-fields">{{size}}</h4>
+    {{/each}}
+    </div>
+    </div>
+</div>
+<p class="mt-3 p-2 bg-info text-white bd">Disclaimer - There's a setTimeOut function after deleting/inserting data into the database, in case the database viewer doesn't show it properly refresh the page.</p>
+</div>
+</div>
