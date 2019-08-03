@@ -7,35 +7,17 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
+// setting key/token access
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
+//creating model
 
-// var MyModel = mongoose.model('test', new Schema({ name: String }));
-// var schema = new mongoose.Schema({ name: 'string', size: 'string' });
-// var Tank = mongoose.model('Tank', schema);
-
-// var small = new Tank({ name: req.body.name ,size: 'small' });
-// small.save(function (err) {
-//   if (err) return handleError(err);
-//   // saved!
-// });
-
-// console.log(Tank.findOne({size:'big'}));
-
-// or
-
-// Tank.create({ size: 'small' }, function (err, small) {
-//   if (err) return handleError(err);
-//   // saved!
-// });
-
+// check database connection
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   console.log("we're connected!");
-
 });
 
 var indexRouter = require('./routes/index');
@@ -73,7 +55,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// app.listen(process.env.PORT);
 
 module.exports = app;

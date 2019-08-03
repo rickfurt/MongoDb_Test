@@ -40,3 +40,7 @@ z-index: 9999;
         width: 100%;
     }
 }
+
+.img-test{
+    min-height: 200px;
+}
