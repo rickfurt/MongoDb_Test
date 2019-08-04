@@ -44,8 +44,20 @@ var Image = mongoose.model('Image', ImageSchema);
 
 var result;
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
+  // //Get the content from Db
+  var message = 'Testing error login messages';
+
+
+
+    res.render('login', {title:'Please login Bellow',message:message})
+});  
+
+
+
+
+/* GET home page. */
+router.get('/admin', function(req, res, next) {
   // //Get the content from Db
   var contentData = Image.find(function (err, Image) {
     if (err) return console.error(err);
@@ -54,15 +66,8 @@ router.get('/', function(req, res, next) {
     // console.log(Image);
   });
 
-  var xx = fetch('https://cloudinary.com/console/media_library/folders/all/samples/ecommerce')
-    .then(res => res.JSON());
-
-    console.log(xx)
-    
-  
-
   setTimeout(function(){
-    res.render('index', { title: 'MongoDb | Express.js | Cloudinary API test' , user:'Ricardo Furtado',readDb:result});  
+    res.render('admin', { title: 'MongoDb | Express.js | Cloudinary API test' , user:'Ricardo Furtado',readDb:result});  
   },5000)
 });  
 
@@ -78,15 +83,7 @@ var newItem = new Image({ title: title ,description:description,url:url });
     console.log('Success saving the new item ')
   });
 
-  res.redirect('/');
-}); 
-
-router.post('/cloud', function(req, res, next) {
-
-cloudinary.v2.uploader.upload("dog.mp4", 
-  {resource_type: "video", public_id: "my_folder/my_sub_folder/my_dog",
-  overwrite: true, notification_url: "https://mysite.example.com/notify_endpoint"},
-  function(error, result) {console.log(result, error)});
+  res.redirect('/admin');
 }); 
 
 
@@ -99,7 +96,7 @@ router.post('/delete', function(req, res, next) {
     console.log('The item :' + title + ' has been deleted...')
   });
   
-    res.redirect('/');
+    res.redirect('/admin');
   }); 
 
 module.exports = router;
