@@ -7,13 +7,12 @@
 </div>
 
 <div class="container card m-4 col-10">
-<form class="m-3">
+<form class="m-3" action="/login" method="POST">
   <div class="form-group">
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your User Name">
-    <small class="text-danger ml-1">{{message}}</small>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" placeholder="Enter your UserName">
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
     <small class="text-danger ml-1">{{message}}</small>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

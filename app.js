@@ -7,6 +7,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
 // setting key/token access
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
@@ -44,6 +45,10 @@ app.use('/users', usersRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
+
+
+
 
 // error handler
 app.use(function (err, req, res, next) {
