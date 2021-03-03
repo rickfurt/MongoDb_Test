@@ -1,5 +1,11 @@
 # Simple MongoDb test and usage
 
+[Live Demo](https://mongo-test-rick.herokuapp.com/login)
+
+### To **login** on Demo version use:
+	username:admin 
+	password:1234
+
 This project was created to test and learn the integration between a Server Side Rendered application and a non relational database , which in this case was mongoDb.
 
 Stack
